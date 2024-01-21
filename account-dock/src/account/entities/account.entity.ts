@@ -21,6 +21,9 @@ export class Account {
   @Column()
   agency: string;
 
+  @Column()
+  blocked: boolean;
+
   @OneToOne(() => AccountHolder)
   @JoinColumn()
   accountHolder: AccountHolder;

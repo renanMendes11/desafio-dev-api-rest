@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AccountHolderService } from '../account-holder.service';
+import { AccountHolderService } from '../../src/account-holder/account-holder.service';
 
 describe('AccountHolderService', () => {
   let service: AccountHolderService;

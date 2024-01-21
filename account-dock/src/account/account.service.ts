@@ -5,6 +5,9 @@ import { Account } from './entities/account.entity';
 import { Repository } from 'typeorm';
 import { AccountHolder } from 'src/account-holder/entities/account-holder.entity';
 import Utils from 'src/Utils';
+import { RemoveAccountDto } from './dto/remove-account.dto';
+import { UpdateAccountStatusDto } from './dto/update-account-status.dto';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Injectable()
 export class AccountService {
@@ -45,6 +48,7 @@ export class AccountService {
       number: Utils.getRandomInt(111, 999),
       agency: createAccountDto.agency,
       balance: 0,
+      blocked: false,
     };
 
     await this.accountRepository.save(accountData);
@@ -52,5 +56,48 @@ export class AccountService {
 
   async findAll() {
     return await this.accountRepository.find();
+  }
+
+  async removeAccount(removeAccountDto: RemoveAccountDto) {
+    const findAccount = await this.accountRepository.findOneBy({
+      accountHolder: {
+        cpf: removeAccountDto.cpf,
+      },
+    });
+
+    if (findAccount === null) {
+      throw new HttpException(
+        'Não existe conta associada a esse cpf!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    await this.accountRepository.remove(findAccount);
+  }
+
+  async updateAccountStatus(updateAccountStatusDto: UpdateAccountStatusDto) {
+    const findAccount = await this.accountRepository.findOneBy({
+      accountHolder: {
+        cpf: updateAccountStatusDto.cpf,
+      },
+    });
+
+    if (findAccount === null) {
+      throw new HttpException(
+        'Não existe conta associada a esse cpf!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    await this.accountRepository.update(
+      {
+        accountHolder: {
+          cpf: updateAccountStatusDto.cpf,
+        },
+      },
+      {
+        blocked: updateAccountStatusDto.blocked,
+      },
+    );
   }
 }
