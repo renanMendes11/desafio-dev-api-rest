@@ -31,6 +31,10 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Swagger (Documentação da api)
+- Acesse a documentação e teste a api no endereço: http://localhost:3000/api
+
+
 ## Test
 
 ```bash

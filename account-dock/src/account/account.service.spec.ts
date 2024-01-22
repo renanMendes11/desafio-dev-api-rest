@@ -16,14 +16,14 @@ describe('AccountService', () => {
     it('should create account', () => {
       const payload = {
         cpf: '08249215427',
+        agency: '1234',
       };
 
-      // Act
-      const tweet = service.createTweet(payload);
+      const account = service.create(payload);
 
       // Assert
-      expect(tweet).toBe(payload);
-      expect(service.tweets).toHaveLength(1);
+      expect(account).toBe(payload);
+      expect(service.findAll()).toHaveLength(1);
     });
   });
 });

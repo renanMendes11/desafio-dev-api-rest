@@ -3,11 +3,10 @@ import { CreateAccountDto } from './dto/create-account.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Account } from './entities/account.entity';
 import { Repository } from 'typeorm';
-import { AccountHolder } from 'src/account-holder/entities/account-holder.entity';
 import Utils from 'src/Utils';
 import { RemoveAccountDto } from './dto/remove-account.dto';
 import { UpdateAccountStatusDto } from './dto/update-account-status.dto';
-import { AccountExctractDto } from '../operation/dto/account-extract.dto';
+import { AccountHolder } from 'src/account-holder/entities/account-holder.entity';
 
 @Injectable()
 export class AccountService {

@@ -1,4 +1,4 @@
-import { AccountHolder } from 'src/account-holder/entities/account-holder.entity';
+import { AccountHolder } from '../../account-holder/entities/account-holder.entity';
 import { Operation } from 'src/operation/entities/operation.entity';
 import {
   Column,
