@@ -1,1 +1,5 @@
-export class CreateOperationDto {}
+export class CreateOperationDto {
+  cpf: string;
+  type: string;
+  value: number;
+}

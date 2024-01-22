@@ -7,7 +7,7 @@ import { AccountHolder } from 'src/account-holder/entities/account-holder.entity
 import Utils from 'src/Utils';
 import { RemoveAccountDto } from './dto/remove-account.dto';
 import { UpdateAccountStatusDto } from './dto/update-account-status.dto';
-import { cpf } from 'cpf-cnpj-validator';
+import { AccountExctractDto } from '../operation/dto/account-extract.dto';
 
 @Injectable()
 export class AccountService {

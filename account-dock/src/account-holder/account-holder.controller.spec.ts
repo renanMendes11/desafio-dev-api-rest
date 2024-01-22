@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AccountHolderController } from '../../src/account-holder/account-holder.controller';
-import { AccountHolderService } from '../../src/account-holder/account-holder.service';
+import { AccountHolderController } from './account-holder.controller';
+import { AccountHolderService } from './account-holder.service';
 
 describe('AccountHolderController', () => {
   let controller: AccountHolderController;

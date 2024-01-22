@@ -1,8 +1,10 @@
 import { AccountHolder } from 'src/account-holder/entities/account-holder.entity';
+import { Operation } from 'src/operation/entities/operation.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -24,7 +26,12 @@ export class Account {
   @Column()
   blocked: boolean;
 
-  @OneToOne(() => AccountHolder)
+  @OneToOne(() => AccountHolder, {
+    eager: true,
+  })
   @JoinColumn()
   accountHolder: AccountHolder;
+
+  @OneToMany(() => Operation, (operation) => operation.account)
+  operations: Operation[];
 }
